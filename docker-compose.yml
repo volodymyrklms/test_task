@@ -1,0 +1,21 @@
+version: "3.6"
+services:
+  web:
+    build: .
+    ports:
+      - "5001:5000"
+    depends_on:
+      - redis
+    links:
+      - redis
+
+
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "7234:6379"
+
+networks:
+  app:
+    driver:
+      bridge
